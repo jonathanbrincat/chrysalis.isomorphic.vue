@@ -4,6 +4,11 @@ const nodeExternals = require('webpack-node-externals');
 exports.chainWebpack = (webpackConfig) => {
   if(!process.env.SSR) return;
 
+  webpackConfig
+    .entry('app')
+    .clear()
+    .add('./src/main.server.ts');
+
   webpackConfig.target('node');
   webpackConfig.output.libraryTarget('commonjs2');
 

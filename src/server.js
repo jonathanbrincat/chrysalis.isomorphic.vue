@@ -1,16 +1,16 @@
-const path = require("path");
-const express = require("express");
+const path = require('path');
+const express = require('express');
 
 const server = express();
 
-server.get("*", async (request, response) => {
+server.get('*', async (request, response) => {
   const html = `
   <html>
     <head>
       <title>Hello</title>
     </head>
     <body>
-      <h1>Hello</h1>
+      <h1>Hello from server</h1>
     </body>
   </html>
   `;

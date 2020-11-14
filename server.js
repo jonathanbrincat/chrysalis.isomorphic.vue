@@ -8,6 +8,10 @@ const manifest = require('./dist/ssr-manifest.json');
 const App = require( path.join(__dirname, './dist', manifest['app.js']) ).default;
 
 const server = express();
+server.use('/img', express.static( path.join(__dirname, './dist', 'img') ));
+server.use('/js', express.static( path.join(__dirname, './dist', 'js') ));
+server.use('/css', express.static( path.join(__dirname, './dist', 'css') ));
+server.use('/favicon.ico', express.static( path.join(__dirname, './dist', 'favicon.ico') ));
 
 server.get('*', async (request, response) => {
   const app = createSSRApp(App);
@@ -17,6 +21,7 @@ server.get('*', async (request, response) => {
   <html>
     <head>
       <title>Hello</title>
+      <link rel="stylesheet" href="${manifest['app.css']}" />
     </head>
     <body>
       <h1>Hello from server</h1>
